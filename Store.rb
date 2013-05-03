@@ -12,7 +12,7 @@ class Store
     end
     
     def delete()
-        results = conn.query("delete from top_fav");
+        conn.query("delete from top_fav");
     end
     
     def queue(batch, seq, photo_id)
