@@ -7,7 +7,7 @@ class BOFLoader
         puts "loading for #{batch}"
         store = Store.new()
         explored = Explored.new()
-        photos = explored.getList(batch, 100)
+        photos = explored.getList(batch, 50)
         fav_map = {}
         photos.each { |photo|
             puts "getting favs for #{photo.id}"
