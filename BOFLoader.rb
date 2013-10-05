@@ -8,15 +8,16 @@ class BOFLoader
         store = Store.new()
         explored = Explored.new()
         photos = explored.getList(batch, 50)
-        fav_map = {}
+        fav_shots = []
         photos.each { |photo|
             puts "getting favs for #{photo.id}"
             fav_count = explored.getFavCount(photo)
-            fav_map[photo.id]=fav_count.to_i
+            if fav_count.to_i > 500
+                fav_shots.push photo.id
+            end
         }
-        fav_map = fav_map.sort_by {|k,v| v}.reverse
-        puts "top 10 => #{fav_map.to_a[0..9]}"
-        fav_list=fav_map.to_a[0..3].shuffle.concat(fav_map.to_a[4..8].shuffle)
+        puts "top 10 => #{fav_shots[0..9]}"
+        fav_list=fav_shots[0..3].shuffle.concat(fav_shots.to_a[4..8].shuffle)
         puts "queueing => #{fav_list}"
         store.delete
         i = 0;
