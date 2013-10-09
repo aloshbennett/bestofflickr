@@ -16,6 +16,7 @@ class Store
     end
     
     def queue(batch, seq, photo_id)
+    	puts "queueing #{photo_id}"
         conn.query("insert into top_fav (batch, seq, photo_id) values ('#{batch}', '#{seq}', '#{photo_id}')");
     end
 

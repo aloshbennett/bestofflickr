@@ -22,7 +22,7 @@ class BOFLoader
         store.delete
         i = 0;
         fav_list.each { |fav|
-            store.queue(batch, i, fav[0])
+            store.queue(batch, i, fav)
             i=i+1;
         }
     end
